@@ -35,40 +35,15 @@ const Gallery = () => {
 
         <h2 className="text-white text-[20px] font-semibold bg-[#171717] px-6 py-3 rounded-[20px]">Gallery</h2>
 
-        <button
-          onClick={handleAddImage}
-          className="px-6 py-3 bg-[#FFFFFF08] hover:bg-[#FFFFFF15] text-white text-[12px] font-semibold rounded-[104px] shadow-[0px_3px_3px_0px_rgba(255,255,255,0.15)_inset,0px_0px_49px_0px_rgba(255,255,255,0.05)_inset,9px_10px_7px_0px_rgba(0,0,0,0.4),-0.5px_-0.5px_7px_0px_rgba(255,255,255,0.25)] transition-all duration-300 flex items-center gap-1"
-        >
-          <span className="text-[16px]">+</span>
-          ADD IMAGE
-        </button>
-      </div>
-
-      <div className="relative">
-        <div className="flex gap-4 mb-8 overflow-hidden">
-          <div 
-            className="flex gap-4 transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * (100 / 3 + 5.33)}%)` }}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={handleAddImage}
+            className="px-6 py-3 bg-[#FFFFFF08] hover:bg-[#FFFFFF15] text-white text-[12px] font-semibold rounded-[104px] shadow-[0px_3px_3px_0px_rgba(255,255,255,0.15)_inset,0px_0px_49px_0px_rgba(255,255,255,0.05)_inset,9px_10px_7px_0px_rgba(0,0,0,0.4),-0.5px_-0.5px_7px_0px_rgba(255,255,255,0.25)] transition-all duration-300 flex items-center gap-1"
           >
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-[190px] h-[179px] rounded-[24px] overflow-hidden hover:scale-105 hover:rotate-2 transition-all duration-300 grayscale hover:grayscale-0"
-              >
-                <img
-                  src={image}
-                  alt={`Gallery image ${index + 1}`}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/190x179/4a5568/ffffff?text=Image'
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+            <span className="text-[16px]">+</span>
+            ADD IMAGE
+          </button>
 
-        <div className="flex justify-between items-center">
           <button
             onClick={handlePrevious}
             disabled={currentIndex === 0}
@@ -96,6 +71,29 @@ const Gallery = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
             </svg>
           </button>
+        </div>
+      </div>
+
+      <div className="flex gap-4 overflow-hidden">
+        <div 
+          className="flex gap-4 transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * (100 / 3 + 5.33)}%)` }}
+        >
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-[190px] h-[179px] rounded-[24px] overflow-hidden hover:scale-105 hover:rotate-2 transition-all duration-300 grayscale hover:grayscale-0"
+            >
+              <img
+                src={image}
+                alt={`Gallery image ${index + 1}`}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.src = 'https://via.placeholder.com/190x179/4a5568/ffffff?text=Image'
+                }}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </Widget>
